@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprende Kubernetes desde cero con nuestra guía completa. Tutoriales, ejemplos prácticos y ejercicios.">
+    <meta name="author" content="Isaac Esteban Haro Torres">
+    <title>☸️ Kubernetes Desde Cero - Guía Completa</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">☸️ Kubernetes Desde Cero</a>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#temas">Temas</a></li>
+                    <li><a href="#contenido">Contenido</a></li>
+                    <li><a href="#ejemplos">Ejemplos</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>☸️ Kubernetes Desde Cero - Guía Completa</h1>
+                <p class="hero-subtitle">Aprende Kubernetes desde los fundamentos hasta conceptos avanzados</p>
+                <blockquote class="hero-quote">
+                    "Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services."
+                </blockquote>
+                <a href="#temas" class="btn btn-primary">Explorar Temas</a>
+            </div>
+        </section>
+
+        <section id="temas" class="topics">
+            <div class="container">
+                <h2>📖 Temas del Curso</h2>
+                <p class="topics-intro">Haz clic en cualquier tema para ver el contenido detallado</p>
+
+                <div class="topics-grid">
+                    <!-- Módulo 1 -->
+                    <div class="topic-card" data-topic="topic1">
+                        <div class="topic-header">
+                            <span class="topic-icon">📌</span>
+                            <h3>Módulo 1: Fundamentos</h3>
+                        </div>
+                        <ul class="topic-list">
+                            <li><a href="#tema1-1">Introducción a Kubernetes</a></li>
+                            <li><a href="#tema1-2">Instalación y configuración</a></li>
+                            <li><a href="#tema1-3">Conceptos básicos</a></li>
+                            <li><a href="#tema1-4">Pods, Deployments, Services</a></li>
+                        </ul>
+                        <a href="#tema1-1" class="btn-topic">Ver tema →</a>
+                    </div>
+
+                    <!-- Módulo 2 -->
+                    <div class="topic-card" data-topic="topic2">
+                        <div class="topic-header">
+                            <span class="topic-icon">⚙️</span>
+                            <h3>Módulo 2: Intermedio</h3>
+                        </div>
+                        <ul class="topic-list">
+                            <li><a href="#tema2-1">ConfigMaps y Secrets</a></li>
+                            <li><a href="#tema2-2">Volúmenes y persistencia</a></li>
+                            <li><a href="#tema2-3">Ingress y networking</a></li>
+                            <li><a href="#tema2-4">Buenas prácticas</a></li>
+                        </ul>
+                        <a href="#tema2-1" class="btn-topic">Ver tema →</a>
+                    </div>
+
+                    <!-- Módulo 3 -->
+                    <div class="topic-card" data-topic="topic3">
+                        <div class="topic-header">
+                            <span class="topic-icon">🚀</span>
+                            <h3>Módulo 3: Avanzado</h3>
+                        </div>
+                        <ul class="topic-list">
+                            <li><a href="#tema3-1">StatefulSets y DaemonSets</a></li>
+                            <li><a href="#tema3-2">Auto-scaling (HPA/VPA)</a></li>
+                            <li><a href="#tema3-3">CI/CD con Kubernetes</a></li>
+                            <li><a href="#tema3-4">Monitoring con Prometheus</a></li>
+                        </ul>
+                        <a href="#tema3-1" class="btn-topic">Ver tema →</a>
+                    </div>
+                </div>
+
+                <!-- Contenido Detallado de Temas -->
+                <div class="topic-content" id="topic-content">
+                    <!-- Tema 1-1 -->
+                    <div class="content-detail" id="tema1-1">
+                        <h3>📌 Introducción a Kubernetes</h3>
+                        <div class="content-body">
+                            <p><strong>¿Qué es Kubernetes?</strong> Kubernetes (también conocido como K8s) es una plataforma de código abierto para automatizar el despliegue, escalado y gestión de aplicaciones containerizadas. Fue diseñado por Google y ahora es mantenido por la Cloud Native Computing Foundation (CNCF).</p>
+
+                            <h4>Características principales:</h4>
+                            <ul>
+                                <li><strong>Orquestación de contenedores:</strong> Gestiona automáticamente dónde y cómo se ejecutan los contenedores.</li>
+                                <li><strong>Auto-escalado:</strong> Escala aplicaciones automáticamente según la demanda.</li>
+                                <li><strong>Auto-reparación:</strong> Reinicia contenedores fallidos y reemplaza nodos.</li>
+                                <li><strong>Balanceo de carga:</strong> Distribuye el tráfico entre contenedores.</li>
+                                <li><strong>Gestión de secretos:</strong> Almacena y gestiona información sensible.</li>
+                            </ul>
+
+                            <h4>Arquitectura de Kubernetes:</h4>
+                            <ul>
+                                <li><strong>Control Plane:</strong> Componentes que toman decisiones globales del cluster.</li>
+                                <li><strong>API Server:</strong> Expone la API de Kubernetes.</li>
+                                <li><strong>etcd:</strong> Almacén de datos consistente y distribuido.</li>
+                                <li><strong>Scheduler:</strong> Asigna pods a nodos.</li>
+                                <li><strong>Controller Manager:</strong> Ejecuta procesos de control.</li>
+                                <li><strong>Worker Nodes:</strong> Nodos que ejecutan las aplicaciones.</li>
+                                <li><strong>Kubelet:</strong> Agente que corre en cada nodo.</li>
+                                <li><strong>Kube-proxy:</strong> Mantiene reglas de red.</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Dato curioso:</strong> El nombre Kubernetes viene del griego y significa "timonel" o "piloto". El logo de las 7 hélices representa las 7 letras de la palabra.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 1-2 -->
+                    <div class="content-detail" id="tema1-2">
+                        <h3>🔧 Instalación y Configuración</h3>
+                        <div class="content-body">
+                            <h4>Opciones de instalación:</h4>
+                            
+                            <h5>1. Minikube (Local):</h5>
+                            <pre><code class="language-bash"># Instalar Minikube en Windows
+choco install minikube
+
+# Iniciar cluster
+minikube start
+
+# Verificar
+kubectl cluster-info</code></pre>
+
+                            <h5>2. Kind (Kubernetes in Docker):</h5>
+                            <pre><code class="language-bash"># Instalar Kind
+choco install kind
+
+# Crear cluster
+kind create cluster --name mi-cluster
+
+# Verificar
+kubectl cluster-info</code></pre>
+
+                            <h5>3. Docker Desktop:</h5>
+                            <pre><code class="language-bash"># Habilitar Kubernetes en Docker Desktop
+# Ir a Settings → Kubernetes → Enable Kubernetes</code></pre>
+
+                            <h5>4. kubectl (CLI):</h5>
+                            <pre><code class="language-bash"># Instalar kubectl en Windows
+choco install kubernetes-cli
+
+# Verificar instalación
+kubectl version --client
+
+# Configurar autocompletado
+kubectl completion powershell</code></pre>
+
+                            <h4>Configuración del contexto:</h4>
+                            <pre><code class="language-bash"># Ver contexto actual
+kubectl config current-context
+
+# Listar contextos
+kubectl config get-contexts
+
+# Cambiar contexto
+kubectl config use-context mi-contexto
+
+# Ver configuración
+kubectl config view</code></pre>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Para desarrollo local, usa Minikube o Kind. Para producción, considera servicios gestionados como GKE, EKS o AKS.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 1-3 -->
+                    <div class="content-detail" id="tema1-3">
+                        <h3>📚 Conceptos Básicos</h3>
+                        <div class="content-body">
+                            <h4>Recursos fundamentales:</h4>
+                            
+                            <h5>Pod:</h5>
+                            <p>La unidad más pequeña en Kubernetes. Un Pod puede contener uno o más contenedores que comparten almacenamiento y red.</p>
+
+                            <h5>Deployment:</h5>
+                            <p>Define el estado deseado de los Pods y ReplicaSets. Maneja actualizaciones y rollbacks.</p>
+
+                            <h5>Service:</h5>
+                            <p>Define un conjunto de Pods y una política para acceder a ellos. Proporciona IP estable y DNS.</p>
+
+                            <h5>Namespace:</h5>
+                            <p>Divide un cluster físico en múltiples clusters virtuales.</p>
+
+                            <h4>Comparativa de recursos:</h4>
+                            <table class="info-table">
+                                <tr>
+                                    <th>Recurso</th>
+                                    <th>Propósito</th>
+                                    <th>Nivel</th>
+                                </tr>
+                                <tr>
+                                    <td>Pod</td>
+                                    <td>Unidad de ejecución</td>
+                                    <td>Más bajo</td>
+                                </tr>
+                                <tr>
+                                    <td>ReplicaSet</td>
+                                    <td>Mantiene réplicas</td>
+                                    <td>Intermedio</td>
+                                </tr>
+                                <tr>
+                                    <td>Deployment</td>
+                                    <td>Gestiona despliegues</td>
+                                    <td>Alto</td>
+                                </tr>
+                                <tr>
+                                    <td>StatefulSet</td>
+                                    <td>Aplicaciones con estado</td>
+                                    <td>Alto</td>
+                                </tr>
+                            </table>
+
+                            <h4>Ciclo de vida de un Pod:</h4>
+                            <ul>
+                                <li><strong>Pending:</strong> El Pod ha sido aceptado pero no está listo.</li>
+                                <li><strong>Running:</strong> El Pod está ejecutándose.</li>
+                                <li><strong>Succeeded:</strong> Todos los contenedores terminaron exitosamente.</li>
+                                <li><strong>Failed:</strong> Al menos un contenedor falló.</li>
+                                <li><strong>Unknown:</strong> El estado no puede ser determinado.</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Importante:</strong> Los Pods son efímeros. No almacenes datos importantes directamente en ellos.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 1-4 -->
+                    <div class="content-detail" id="tema1-4">
+                        <h3>📦 Pods, Deployments, Services</h3>
+                        <div class="content-body">
+                            <h4>Creación de Pods:</h4>
+                            <pre><code class="language-yaml"># pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mi-pod
+  labels:
+    app: web
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.21
+    ports:
+    - containerPort: 80
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"</code></pre>
+
+                            <pre><code class="language-bash"># Aplicar
+kubectl apply -f pod.yaml
+
+# Ver pods
+kubectl get pods
+
+# Ver detalles
+kubectl describe pod mi-pod</code></pre>
+
+                            <h4>Deployments:</h4>
+                            <pre><code class="language-yaml"># deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80</code></pre>
+
+                            <pre><code class="language-bash"># Aplicar deployment
+kubectl apply -f deployment.yaml
+
+# Escalar
+kubectl scale deployment mi-deployment --replicas=5
+
+# Actualizar imagen
+kubectl set image deployment/mi-deployment nginx=nginx:1.22
+
+# Ver rollout
+kubectl rollout status deployment/mi-deployment
+
+# Rollback
+kubectl rollout undo deployment/mi-deployment</code></pre>
+
+                            <h4>Services:</h4>
+                            <pre><code class="language-yaml"># service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-servicio
+spec:
+  selector:
+    app: web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer</code></pre>
+
+                            <h4>Tipos de Services:</h4>
+                            <ul>
+                                <li><strong>ClusterIP:</strong> Expone el servicio dentro del cluster (default).</li>
+                                <li><strong>NodePort:</strong> Expone el servicio en cada nodo.</li>
+                                <li><strong>LoadBalancer:</strong> Expone el servicio externamente usando un balanceador.</li>
+                                <li><strong>ExternalName:</strong> Mapea el servicio a un DNS externo.</li>
+                            </ul>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 2-1 -->
+                    <div class="content-detail" id="tema2-1">
+                        <h3>⚙️ ConfigMaps y Secrets</h3>
+                        <div class="content-body">
+                            <h4>ConfigMaps:</h4>
+                            <p>Los ConfigMaps permiten almacenar datos de configuración no confidenciales en pares clave-valor.</p>
+
+                            <pre><code class="language-yaml"># configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DATABASE_URL: "postgresql://localhost:5432/mydb"
+  LOG_LEVEL: "info"
+  APP_ENV: "production"
+  config.properties: |
+    server.port=8080
+    server.host=0.0.0.0</code></pre>
+
+                            <pre><code class="language-bash"># Crear ConfigMap
+kubectl create configmap app-config --from-literal=KEY=value
+
+# Desde archivo
+kubectl create configmap app-config --from-file=config.properties
+
+# Usar en Pod
+kubectl apply -f pod-with-config.yaml</code></pre>
+
+                            <h4>Secrets:</h4>
+                            <p>Los Secrets almacenan información sensible como contraseñas, tokens OAuth y claves SSH.</p>
+
+                            <pre><code class="language-yaml"># secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+stringData:
+  username: admin
+  password: supersecret123
+  api-key: abc123xyz</code></pre>
+
+                            <pre><code class="language-bash"># Crear Secret desde literal
+kubectl create secret generic app-secret \
+  --from-literal=username=admin \
+  --from-literal=password=supersecret123
+
+# Desde archivo
+kubectl create secret generic app-secret \
+  --from-file=./credentials.txt
+
+# Ver secrets (los valores están en base64)
+kubectl get secrets
+kubectl describe secret app-secret</code></pre>
+
+                            <h4>Usar en Pods:</h4>
+                            <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: mi-pod
+spec:
+  containers:
+  - name: app
+    image: mi-app
+    env:
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: username
+    envFrom:
+    - configMapRef:
+        name: app-config</code></pre>
+
+                            <div class="info-box">
+                                <strong>⚠️ Importante:</strong> Los Secrets están codificados en base64, no encriptados. Para mayor seguridad, usa herramientas como Sealed Secrets o Vault.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 2-2 -->
+                    <div class="content-detail" id="tema2-2">
+                        <h3>💾 Volúmenes y Persistencia</h3>
+                        <div class="content-body">
+                            <h4>Tipos de volúmenes:</h4>
+                            
+                            <h5>1. emptyDir:</h5>
+                            <p>Volume temporal que se crea cuando un Pod es asignado a un nodo.</p>
+                            <pre><code class="language-yaml">volumes:
+- name: cache-volume
+  emptyDir: {}</code></pre>
+
+                            <h5>2. hostPath:</h5>
+                            <p>Monta un archivo o directorio del nodo host.</p>
+                            <pre><code class="language-yaml">volumes:
+- name: log-volume
+  hostPath:
+    path: /var/log
+    type: Directory</code></pre>
+
+                            <h5>3. PersistentVolume (PV):</h5>
+                            <pre><code class="language-yaml"># pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mi-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data</code></pre>
+
+                            <h5>4. PersistentVolumeClaim (PVC):</h5>
+                            <pre><code class="language-yaml"># pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mi-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi</code></pre>
+
+                            <h5>5. Usar PVC en Pod:</h5>
+                            <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: mi-pod
+spec:
+  containers:
+  - name: app
+    image: mi-app
+    volumeMounts:
+    - name: storage
+      mountPath: /data
+  volumes:
+  - name: storage
+    persistentVolumeClaim:
+      claimName: mi-pvc</code></pre>
+
+                            <h4>Storage Classes:</h4>
+                            <pre><code class="language-yaml">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast-storage
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+reclaimPolicy: Retain
+allowVolumeExpansion: true</code></pre>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa StorageClasses para aprovisionamiento dinámico de volúmenes en la nube.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 2-3 -->
+                    <div class="content-detail" id="tema2-3">
+                        <h3>🌐 Ingress y Networking</h3>
+                        <div class="content-body">
+                            <h4>Modelo de red de Kubernetes:</h4>
+                            <ul>
+                                <li>Todos los Pods pueden comunicarse sin NAT.</li>
+                                <li>Todos los nodos pueden comunicarse con todos los Pods.</li>
+                                <li>La IP del Pod es la misma vista desde el Pod y desde otros.</li>
+                            </ul>
+
+                            <h4>Network Policies:</h4>
+                            <pre><code class="language-yaml"># network-policy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend
+spec:
+  podSelector:
+    matchLabels:
+      app: frontend
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: backend
+    ports:
+    - protocol: TCP
+      port: 80
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: backend</code></pre>
+
+                            <h4>Ingress:</h4>
+                            <p>Ingress expone servicios HTTP/HTTPS desde fuera del cluster.</p>
+
+                            <pre><code class="language-yaml"># ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mi-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: miapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 8080</code></pre>
+
+                            <h4>Ingress con TLS:</h4>
+                            <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: secure-ingress
+spec:
+  tls:
+  - hosts:
+    - miapp.com
+    secretName: tls-secret
+  rules:
+  - host: miapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mi-servicio
+            port:
+              number: 443</code></pre>
+
+                            <h4>Ingress Controllers:</h4>
+                            <ul>
+                                <li><strong>NGINX:</strong> El más popular, mantenido por la comunidad.</li>
+                                <li><strong>Traefik:</strong> Fácil de usar, auto-descubrimiento.</li>
+                                <li><strong>HAProxy:</strong> Alto rendimiento.</li>
+                                <li><strong>Cloud providers:</strong> ALB (AWS), Application Gateway (Azure).</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa cert-manager para gestionar certificados TLS automáticamente con Let's Encrypt.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 2-4 -->
+                    <div class="content-detail" id="tema2-4">
+                        <h3>✅ Buenas Prácticas</h3>
+                        <div class="content-body">
+                            <h4>Gestión de recursos:</h4>
+                            <pre><code class="language-yaml">resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "500m"</code></pre>
+
+                            <h4>Health Checks:</h4>
+                            <pre><code class="language-yaml">livenessProbe:
+  httpGet:
+    path: /health
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 3</code></pre>
+
+                            <h4>Security Context:</h4>
+                            <pre><code class="language-yaml">securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL</code></pre>
+
+                            <h4>Labels y Annotations:</h4>
+                            <pre><code class="language-yaml">metadata:
+  labels:
+    app: mi-app
+    version: v1.0.0
+    environment: production
+  annotations:
+    description: "Mi aplicación principal"
+    contact: "equipo@empresa.com"</code></pre>
+
+                            <h4>Checklist de seguridad:</h4>
+                            <ul>
+                                <li>✓ No ejecutar como root</li>
+                                <li>✓ Usar imágenes oficiales y actualizadas</li>
+                                <li>✓ Escanear imágenes con herramientas de seguridad</li>
+                                <li>✓ Usar Network Policies</li>
+                                <li>✓ Limitar recursos (CPU/Memoria)</li>
+                                <li>✓ Usar Secrets para datos sensibles</li>
+                                <li>✓ Habilitar RBAC</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa herramientas como kube-bench y kube-hunter para auditar la seguridad de tu cluster.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 3-1 -->
+                    <div class="content-detail" id="tema3-1">
+                        <h3>🔄 StatefulSets y DaemonSets</h3>
+                        <div class="content-body">
+                            <h4>StatefulSets:</h4>
+                            <p>StatefulSets gestionan aplicaciones con estado que requieren identidad de red única y almacenamiento persistente.</p>
+
+                            <pre><code class="language-yaml"># statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  serviceName: "nginx"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi</code></pre>
+
+                            <h4>Características de StatefulSets:</h4>
+                            <ul>
+                                <li>Los Pods tienen nombres estables: web-0, web-1, web-2...</li>
+                                <li>Se despliegan en orden (0, 1, 2...).</li>
+                                <li>Se eliminan en orden inverso.</li>
+                                <li>Cada Pod tiene su propio PVC.</li>
+                            </ul>
+
+                            <h4>DaemonSets:</h4>
+                            <p>DaemonSets aseguran que todos (o algunos) nodos ejecuten una copia de un Pod.</p>
+
+                            <pre><code class="language-yaml"># daemonset.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-logging
+spec:
+  selector:
+    matchLabels:
+      name: fluentd-logging
+  template:
+    metadata:
+      labels:
+        name: fluentd-logging
+    spec:
+      containers:
+      - name: fluentd
+        image: fluentd:latest
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log</code></pre>
+
+                            <h4>Casos de uso de DaemonSets:</h4>
+                            <ul>
+                                <li>Logging (Fluentd, Filebeat)</li>
+                                <li>Monitoring (Prometheus Node Exporter)</li>
+                                <li>Redes (kube-proxy, Calico)</li>
+                                <li>Almacenamiento (Ceph, GlusterFS)</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa StatefulSets para bases de datos y DaemonSets para agentes que deben correr en todos los nodos.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 3-2 -->
+                    <div class="content-detail" id="tema3-2">
+                        <h3>📈 Auto-scaling (HPA/VPA)</h3>
+                        <div class="content-body">
+                            <h4>Horizontal Pod Autoscaler (HPA):</h4>
+                            <p>HPA escala automáticamente el número de Pods basándose en métricas de CPU, memoria o custom metrics.</p>
+
+                            <pre><code class="language-yaml"># hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mi-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mi-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80</code></pre>
+
+                            <pre><code class="language-bash"># Crear HPA con kubectl
+kubectl autoscale deployment mi-app \
+  --min=2 \
+  --max=10 \
+  --cpu-percent=70
+
+# Ver HPA
+kubectl get hpa
+
+# Ver detalles
+kubectl describe hpa mi-app-hpa</code></pre>
+
+                            <h4>Vertical Pod Autoscaler (VPA):</h4>
+                            <p>VPA ajusta automáticamente los requests y limits de CPU/memoria de los contenedores.</p>
+
+                            <pre><code class="language-yaml"># vpa.yaml
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: mi-app-vpa
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mi-app
+  updatePolicy:
+    updateMode: "Auto"  # Off, Initial, Recreate, Auto</code></pre>
+
+                            <h4>Cluster Autoscaler:</h4>
+                            <p>Escala automáticamente el número de nodos en el cluster.</p>
+
+                            <h4>Comparativa:</h4>
+                            <table class="info-table">
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Qué escala</th>
+                                    <th>Cuándo usar</th>
+                                </tr>
+                                <tr>
+                                    <td>HPA</td>
+                                    <td>Número de Pods</td>
+                                    <td>Carga variable predecible</td>
+                                </tr>
+                                <tr>
+                                    <td>VPA</td>
+                                    <td>Recursos del Pod</td>
+                                    <td>Aplicaciones con uso variable</td>
+                                </tr>
+                                <tr>
+                                    <td>Cluster Autoscaler</td>
+                                    <td>Número de nodos</td>
+                                    <td>Cuando faltan recursos</td>
+                                </tr>
+                            </table>
+
+                            <div class="info-box">
+                                <strong>⚠️ Importante:</strong> No uses HPA y VPA juntos en el mismo deployment (pueden conflictuar).
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 3-3 -->
+                    <div class="content-detail" id="tema3-3">
+                        <h3>🔧 CI/CD con Kubernetes</h3>
+                        <div class="content-body">
+                            <h4>Flujo de CI/CD:</h4>
+                            <ol>
+                                <li>Desarrollador hace push al repositorio</li>
+                                <li>CI pipeline construye la imagen Docker</li>
+                                <li>La imagen se publica en el registry</li>
+                                <li>CD pipeline actualiza el deployment en Kubernetes</li>
+                            </ol>
+
+                            <h4>GitHub Actions ejemplo:</h4>
+                            <pre><code class="language-yaml"># .github/workflows/deploy.yml
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: user/app:${{ github.sha }}
+
+    - name: Configure kubectl
+      uses: azure/k8s-set-context@v3
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+    - name: Deploy
+      run: |
+        kubectl set image deployment/my-app app=user/app:${{ github.sha }}
+        kubectl rollout status deployment/my-app</code></pre>
+
+                            <h4>Helm para gestión de releases:</h4>
+                            <pre><code class="language-bash"># Instalar Helm
+choco install kubernetes-helm
+
+# Crear chart
+helm create mi-app
+
+# Instalar chart
+helm install mi-release ./mi-app
+
+# Actualizar
+helm upgrade mi-release ./mi-app
+
+# Rollback
+helm rollback mi-release 1
+
+# Listar releases
+helm list</code></pre>
+
+                            <h4>Estrategias de deployment:</h4>
+                            <ul>
+                                <li><strong>Recreate:</strong> Elimina todos los Pods y crea nuevos.</li>
+                                <li><strong>RollingUpdate:</strong> Actualiza gradualmente (default).</li>
+                                <li><strong>Blue-Green:</strong> Dos entornos idénticos.</li>
+                                <li><strong>Canary:</strong> Despliega a un subconjunto de usuarios.</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa ArgoCD o Flux para GitOps - sincronización automática del cluster con el repositorio Git.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+
+                    <!-- Tema 3-4 -->
+                    <div class="content-detail" id="tema3-4">
+                        <h3>📊 Monitoring con Prometheus</h3>
+                        <div class="content-body">
+                            <h4>Prometheus Stack:</h4>
+                            <p>Prometheus es un sistema de monitoring y alerting. El stack incluye Prometheus, Grafana, Alertmanager y exporters.</p>
+
+                            <h4>Instalación con Helm:</h4>
+                            <pre><code class="language-bash"># Agregar repositorio
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+# Instalar kube-prometheus-stack
+helm install monitoring prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace</code></pre>
+
+                            <h4>Componentes:</h4>
+                            <ul>
+                                <li><strong>Prometheus Server:</strong> Almacena métricas time-series.</li>
+                                <li><strong>Grafana:</strong> Dashboards y visualización.</li>
+                                <li><strong>Alertmanager:</strong> Gestiona alertas.</li>
+                                <li><strong>Node Exporter:</strong> Métricas del sistema.</li>
+                                <li><strong>kube-state-metrics:</strong> Métricas de recursos K8s.</li>
+                            </ul>
+
+                            <h4>ServiceMonitor ejemplo:</h4>
+                            <pre><code class="language-yaml">apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-monitor
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: mi-app
+  endpoints:
+  - port: web
+    interval: 30s
+    path: /metrics</code></pre>
+
+                            <h4>Alertas ejemplo:</h4>
+                            <pre><code class="language-yaml">apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: app-alerts
+spec:
+  groups:
+  - name: app.rules
+    rules:
+    - alert: HighCPU
+      expr: rate(container_cpu_usage_seconds_total[5m]) > 0.8
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High CPU usage detected"
+        description: "CPU usage is above 80%"</code></pre>
+
+                            <h4>Acceder a Grafana:</h4>
+                            <pre><code class="language-bash"># Port-forward
+kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
+
+# Credenciales por defecto
+# Usuario: admin
+# Password: prom-operator</code></pre>
+
+                            <div class="info-box">
+                                <strong>💡 Tip:</strong> Usa dashboards predefinidos de la comunidad para Kubernetes y aplicaciones comunes.
+                            </div>
+                        </div>
+                        <a href="#temas" class="btn btn-back">← Volver a temas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contenido" class="content">
+            <div class="container">
+                <h2>📚 Contenido del Curso</h2>
+
+                <div class="modules">
+                    <div class="module">
+                        <h3>Módulo 1: Fundamentos</h3>
+                        <ul>
+                            <li>Introducción a Kubernetes</li>
+                            <li>Instalación y configuración</li>
+                            <li>Conceptos básicos</li>
+                            <li>Pods, Deployments, Services</li>
+                        </ul>
+                        <a href="#temas" class="btn-module">Ir a temas →</a>
+                    </div>
+
+                    <div class="module">
+                        <h3>Módulo 2: Intermedio</h3>
+                        <ul>
+                            <li>ConfigMaps y Secrets</li>
+                            <li>Volúmenes y persistencia</li>
+                            <li>Ingress y networking</li>
+                            <li>Buenas prácticas</li>
+                        </ul>
+                        <a href="#temas" class="btn-module">Ir a temas →</a>
+                    </div>
+
+                    <div class="module">
+                        <h3>Módulo 3: Avanzado</h3>
+                        <ul>
+                            <li>StatefulSets y DaemonSets</li>
+                            <li>Auto-scaling (HPA/VPA)</li>
+                            <li>CI/CD con Kubernetes</li>
+                            <li>Monitoring con Prometheus</li>
+                        </ul>
+                        <a href="#temas" class="btn-module">Ir a temas →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ejemplos" class="examples">
+            <div class="container">
+                <h2>📝 Ejemplos Rápidos</h2>
+
+                <div class="code-block">
+                    <h3>Comandos Básicos</h3>
+                    <pre><code class="language-bash"># Ver información del cluster
+kubectl cluster-info
+
+# Listar pods
+kubectl get pods
+
+# Aplicar manifest
+kubectl apply -f archivo.yaml
+
+# Eliminar recurso
+kubectl delete -f archivo.yaml
+
+# Ver logs
+kubectl logs &lt;pod-name&gt;</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Pod Básico</h3>
+                    <pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: mi-pod
+  labels:
+    app: web
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Deployment</h3>
+                    <pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <h3>Service</h3>
+                    <pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: mi-servicio
+spec:
+  selector:
+    app: web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="recursos" class="resources">
+            <div class="container">
+                <h2>📖 Recursos Adicionales</h2>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>Documentación Oficial</h4>
+                        <ul>
+                            <li><a href="https://kubernetes.io/docs/" target="_blank">Kubernetes Documentation</a></li>
+                            <li><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/" target="_blank">kubectl Cheat Sheet</a></li>
+                            <li><a href="https://github.com/kubernetes/kubernetes" target="_blank">Kubernetes GitHub</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>Herramientas</h4>
+                        <ul>
+                            <li>Minikube - Kubernetes local</li>
+                            <li>Kind - Kubernetes en Docker</li>
+                            <li>Helm - Package manager</li>
+                            <li>Lens - IDE para Kubernetes</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>Comunidades</h4>
+                        <ul>
+                            <li><a href="https://kubernetes.io/community/" target="_blank">Kubernetes Community</a></li>
+                            <li>Stack Overflow - Kubernetes</li>
+                            <li>Reddit r/kubernetes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="container">
+                <h2>👨‍💻 Desarrollado por Isaac Esteban Haro Torres</h2>
+                <p class="contact-title">Ingeniero en Sistemas · Full Stack · Automatización · Data</p>
+
+                <div class="contact-info">
+                    <p>📧 Email: <a href="mailto:zackharo1@gmail.com">zackharo1@gmail.com</a></p>
+                    <p>📱 WhatsApp: 098805517</p>
+                    <p>💻 GitHub: <a href="https://github.com/ieharo1" target="_blank">github.com/ieharo1</a></p>
+                    <p>🌐 Portafolio: <a href="https://ieharo1.github.io/portafolio-isaac.haro/" target="_blank">ieharo1.github.io/portafolio-isaac.haro/</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Isaac Esteban Haro Torres - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
